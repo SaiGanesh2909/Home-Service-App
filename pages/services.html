@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose a Service</title>
+  <link rel="stylesheet" href="../assets/styles/style.css" />
+  <link rel="stylesheet" href="../assets/styles/components.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="nav">
+    <h1>Our Services</h1>
+    <button class="btn btn-primary" onclick="logout()">Logout</button>
+  </nav>
+  
+  <main class="container">
+    <div class="services-grid" id="serviceContainer">
+      <!-- Services will be dynamically inserted here -->
+    </div>
+  </main>
+
+  <script src="../data/services.js"></script>
+  <script>
+    const container = document.getElementById("serviceContainer");
+
+    services.forEach(service => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = `
+        <img src="${service.image}" alt="${service.name}" />
+        <h2>${service.name}</h2>
+        <p>${service.description}</p>
+        <button>Select</button>
+      `;
+
+      card.querySelector("button").addEventListener("click", () => {
+        localStorage.setItem("selectedService", JSON.stringify(service));
+        window.location.href = "agencies.html";
+      });
+
+      container.appendChild(card);
+    });
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "../index.html";
+    }
+  </script>
+</body>
+</html>

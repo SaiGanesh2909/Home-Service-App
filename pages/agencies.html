@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select an Agency</title>
+  <link rel="stylesheet" href="../assets/styles/style.css" />
+  <link rel="stylesheet" href="../assets/styles/components.css" />
+</head>
+<body>
+  <header>
+    <h1>Select an Agency</h1>
+    <button class="logoutBtn" onclick="logout()">Logout</button>
+  </header>
+
+  <main class="grid-container" id="agencyContainer"></main>
+
+  <script src="../data/services.js"></script>
+  <script>
+    const agencyContainer = document.getElementById("agencyContainer");
+    const selectedService = JSON.parse(localStorage.getItem("selectedService"));
+
+    if (!selectedService) {
+      agencyContainer.innerHTML = `
+        <h2>No service selected</h2>
+        <p>Please go back to <a href="services.html">services</a> and select a service first.</p>
+      `;
+    } else {
+      const matchingService = services.find(s => s.name === selectedService.name);
+      if (matchingService && matchingService.agencies.length > 0) {
+        matchingService.agencies.forEach(agency => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+          card.innerHTML = `
+            <img src="${agency.logo}" alt="${agency.name}" />
+            <h3>${agency.name}</h3>
+            <p><strong>About:</strong> ${agency.description}</p>
+            <p><strong>Estimated Price:</strong> ₹${agency.priceEstimate}</p>
+            <p><strong>Duration:</strong> ${agency.duration}</p>
+            <button>Select Agency</button>
+          `;
+          card.querySelector("button").addEventListener("click", () => {
+            localStorage.setItem("selectedAgency", JSON.stringify(agency));
+            window.location.href = "booking.html";
+          });
+          agencyContainer.appendChild(card);
+        });
+      } else {
+        agencyContainer.innerHTML = `<p>No agencies found for this service.</p>`;
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "../index.html";
+    }
+  </script>
+</body>
+</html>
