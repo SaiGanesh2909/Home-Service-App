@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking | Home Services</title>
+  <link rel="stylesheet" href="../assets/styles/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Confirm Your Booking</h1>
+
+    <div class="agency-info card">
+      <img id="agency-logo" alt="Agency Logo" width="100"/>
+      <h2 id="agency-name"></h2>
+      <p id="agency-description"></p>
+      <p id="agency-duration"></p>
+      <p id="agency-price"></p>
+    </div>
+
+    <h3>Select Service Types</h3>
+    <div id="service-types" class="grid-container"></div>
+
+    <h3>Schedule Date & Time</h3>
+    <div class="form-container">
+      <input type="date" id="booking-date" required />
+      <input type="time" id="booking-time" required />
+    </div>
+
+    <button id="proceedPayment" class="btn-primary">Proceed to Payment</button>
+  </div>
+
+  <script src="../scripts/booking.js"></script>
+</body>
+</html>

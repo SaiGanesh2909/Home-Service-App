@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home | Home Services</title>
+  <link rel="stylesheet" href="../assets/styles/style.css" />
+  <link rel="stylesheet" href="../assets/styles/components.css" />
+</head>
+<body>
+  <header>
+    <h1>Welcome to Home Service Booking</h1>
+    <button id="logoutBtn">Logout</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>What We Offer</h2>
+      <p>We connect you with top-rated service agencies for all your home needs. Book with ease and track services live.</p>
+      <a href="services.html" class="cta-button">Book a Service</a>
+    </section>
+
+    <section class="how-it-works">
+      <h3>How It Works</h3>
+      <ol>
+        <li><strong>Sign Up / Login:</strong> Create your account and login securely.</li>
+        <li><strong>Browse Services:</strong> Explore services like plumbing, pest control, beauty, and more.</li>
+        <li><strong>Select Agency:</strong> Choose from top agencies based on ratings, price, and availability.</li>
+        <li><strong>Book & Pay:</strong> Pick a time, confirm your service, and complete secure payment.</li>
+        <li><strong>Track Progress:</strong> Live status updates and booking history.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script>
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    });
+
+    // Protect page from unauthorized access
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user) {
+      alert("Please log in first.");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

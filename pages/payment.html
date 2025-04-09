@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payment | Home Services</title>
+  <link rel="stylesheet" href="../assets/styles/style.css" />
+  <link rel="stylesheet" href="../assets/styles/components.css" />
+</head>
+<body>
+  <header>
+    <h2>Payment Details</h2>
+    <button id="logoutBtn">Logout</button>
+  </header>
+
+  <main>
+    <section id="bookingSummary" class="card">
+      <!-- Booking summary will go here -->
+    </section>
+
+    <section>
+      <h3>Select Payment Method</h3>
+      <form id="paymentForm" class="form-container">
+        <label><input type="radio" name="paymentMethod" value="credit" required /> Credit Card</label><br />
+        <label><input type="radio" name="paymentMethod" value="upi" /> UPI</label><br />
+        <label><input type="radio" name="paymentMethod" value="netbanking" /> Net Banking</label><br />
+        <label><input type="radio" name="paymentMethod" value="cod" /> Cash on Delivery</label>
+
+        <div id="paymentDetails"></div>
+
+        <button type="submit" class="btn-primary">Confirm Payment</button>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="../scripts/payment.js"></script>
+</body>
+</html>

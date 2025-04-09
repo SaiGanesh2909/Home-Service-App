@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Agency</title>
+  <link rel="stylesheet" href="../assets/styles/style.css" />
+</head>
+<body>
+  <header>
+    <h2>Choose an Agency</h2>
+    <button class="logoutBtn" onclick="logout()">Logout</button>
+  </header>
+
+  <main>
+    <section>
+      <h3>Available Agencies</h3>
+      <div id="agenciesList" class="agencies-list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="../scripts/agencies.js"></script>
+  <script>
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "../index.html";
+    }
+  </script>
+</body>
+</html>
